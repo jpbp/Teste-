@@ -1,5 +1,6 @@
 <?php  
 
+session_start();
 include("../Model/Cliente.php");
 include("../Persistence/Conection.php");
 include("../Persistence/ClienteDao.php");
@@ -21,7 +22,9 @@ $tabela = $cDAO->buscarCliente($c1,$con->getLink());
 
 
 if( mysqli_num_rows($tabela) == 0 ){
-	echo "o nome: ".$nome." Não esta cadastrado no sistema ";
+	$_SESSION['busca']="nada";
+	header('Location: ../View/BuscarCliente.php');
+    exit();
 }
 else{
 	$openTable="<table style=\"width:100%\" border=\"1\">
@@ -29,22 +32,27 @@ else{
 			<th>Nome</th>
 			<th>CPF</th> 
 			<th>Celular</th>
-			<th> <th>
+			<th>excluir</th>
+			<th>alterar</th>
 		</tr>";
 
 	$bodyTable = "" ;
+	
 
-	while($row = mysqli_fetch_assoc($tabela)){
+	while($row = mysqli_fetch_row($tabela)){
 			$bodyTable = $bodyTable."<tr>
-				<td>".$row['nome']."</td>
-				<td>".$row['cpf']."</td> 
-				<td>".$row['celular']."</td>
-				<td> <a href="."../View/AlterarCliente.php"."> <button>excluir</button><a/> <a href="."../View/AlterarCliente.php"."> <button>alterar</button><a/> </td>
+				<td>".$row[0]."</td>
+				<td>".$row[1]."</td> 
+				<td>".$row[3]."</td>
+				<td> <a href="."../Controller/controller_ExcluirCliente.php?codigo=".$row[0].""."> <button > remover </button><a/> </td>
+				<td> <a href="."../View/AlterarCliente.php"."> <button>alterar</button><a/> </td>
 			</tr>";
+			$id+=1;
+			$_SESSION['nomebuscado']=$row['nome'];
 		}
 	$closeTable ="</table>";
 
-	echo "<!DOCTYPE html>
+	$table = "<!DOCTYPE html>
 			<html lang=\"pt-br\">
 
 			<header>
@@ -58,6 +66,9 @@ else{
 			"</body>
 
 			</html>";
+	$_SESSION['busca']=$table;
+	header('Location: ../View/BuscarCliente.php');
+    exit();
 }
 
 ?>
