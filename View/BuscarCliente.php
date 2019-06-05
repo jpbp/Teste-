@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,19 @@
 
 		    <label for="nome"></label>
 		    <input type="text"  name="nome" placeholder="Nome a ser buscado">
-		    <button class="button" type="submit" name="Buscar">Buscar</button>
-		</form>		
+		    <button class="button" type="submit" name="Buscar">Buscar</button><br>
+		</form>	
+	<?php
+		if(empty($_SESSION['busca'])){
+			echo "vazio";
+		}
+		else if($_SESSION['busca']=='nada'){
+			echo "nenhum usuario encontrado";
+		}
+		else
+		{
+			echo $_SESSION['busca'];
+		}
+	?>	
 </body>
 </html>
