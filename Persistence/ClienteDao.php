@@ -34,6 +34,39 @@ class ClienteDao{
 		return $r;
 
 	 }
+
+	 function excluirCliente($cliente,$link){
+
+	 	$query = "DELETE FROM `Clientes` WHERE cpf = '".$cliente->getCpf()."'";
+	 	echo $query;
+			if(!mysqli_query($link,$query)){
+				echo "deu ruim";
+				die ("nao foi possivel excluir".mysqli_error($link));
+			}
+			echo "excluido";
+			
+	 }
+	 function alterarCliente($cliente,$link){
+	 	$query = "UPDATE `Clientes` SET `nome`='".$cliente->getNome().
+					"',`residencial`='".$cliente->getResidencial().
+					"',`celular`='".$cliente->getCelular().
+					"',`email`='".$cliente->getEmail().
+					"',`cep`='".$cliente->getCep().
+					"',`logradouro`='".$cliente->getLogradouro().
+					"',`bairro`='".$cliente->getBairro().
+					"',`cidade`='".$cliente->getCidade().
+					"',`complemento`='".$cliente->getComplemento().
+					"',`numero`='".$cliente->getNumero().
+					"',`estado`='".$cliente->getEstado().
+					"' WHERE cpf = '".$cliente->getCpf()."'";
+			
+
+			if(!mysqli_query($link,$query)){
+				
+				return false;
+			}
+			return true;
+	 }
 	 	
 
 }

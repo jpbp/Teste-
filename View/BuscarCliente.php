@@ -18,7 +18,7 @@
 		</form>	
 	<?php
 		if(empty($_SESSION['busca'])){
-			echo "vazio";
+			
 		}
 		else if($_SESSION['busca']=='nada'){
 			echo "nenhum usuario encontrado";
@@ -26,7 +26,21 @@
 		else
 		{
 			echo $_SESSION['busca'];
+			unset($_SESSION['busca']);
 		}
 	?>	
+	<?php
+	if(!empty($_SESSION['excluiu'])){
+		echo $_SESSION['excluiu'];
+		unset($_SESSION['excluiu']);
+	}
+	?>
+	<?php
+	if(!empty($_SESSION['alterado'])){
+		echo $_SESSION['alterado'];
+		unset($_SESSION['alterado']);
+	}
+
+	?>
 </body>
 </html>
