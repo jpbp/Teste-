@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Menu Principal</title>
+    <meta name="author" content="Gabrielle">
+    <link rel="icon" href="hogwarts.png">
+
+    <!-- Responsivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="menuPrincipal.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/63cd9f4730.js"></script>
+
+    <script>
+        // cira uma função home onde ao ser chamada pega a tag de id frame e altera o valor do atributo src
+        // document faz com que o javascript entre no DOM e getElementById procura o elemento com o id descrito dentro dos parentesses
+        // ainda a posiblidade de usar Jquery framework js
+        //função home usando jquery:
+        // $("#home").click(function(){
+        //    $("#frame").attr("src", "home.html");
+        // });
+        // no caso do jquery não utiliza o atributo onclick dentro da tag como você vai ver mais a baixo
+        // para mais jquery: https://jquery.com/
+        function home() {
+            document.getElementById("frame").src = "home.html";
+        }
+    </script>
+</head>
+
+<body class="row">
+    <div class="col-3  gabi" style="padding-right: 0 !important">
+        <nav class="nav flex-column">
+            <img src="hogwarts.png" alt="Hogwarts">
+            <h3>Loja Hogwarts</h3>
+            <ul class="menuLink">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-dashboard fa-lg"></i> Home
+                    </a>
+                </li>
+
+                <li data-toggle="collapse" data-target="#bruxos" class="collapsed active">
+                    <a href="#"><i class="fa fa-gift fa-lg"></i> Bruxos<span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="bruxos">
+                    <li><a href="#">Cadastrar </a></li>
+                    <li><a href="#">Buscar </a></li>
+
+                </ul>
+                <li data-toggle="collapse" data-target="#produtos" class="collapsed active">
+                    <a href="#"><i class="fas fa-broom"></i> Artigos Mágicos<span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="produtos">
+                    <li><a href="#">Cadastrar </a></li>
+                    <li><a href="#">Buscar </a></li>
+
+                </ul>
+                <li data-toggle="collapse" data-target="#pedidos" class="collapsed active">
+                    <a href="#"><i class="fas fa-cash-register"></i> Pedidos</a>
+                </li>
+                <ul class="sub-menu collapse" id="pedidos">
+                    <div id="relatorio" onclick="relatorio()" class="button">
+
+                        <li><a href="#">Cadastrar </a></li>
+                        <a href="#">Buscar </a>
+                    </div>
+
+                </ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-line"></i> Relatório
+                    </a>
+                </li>
+            </ul>
+            <div class="menu">
+                <!-- atributo onclick chama a função dentro dele ao clickar na tag -->
+                <div id="home" onclick="home()" class="button">
+                    <!-- a utlização da tag a (links) é inutil nesse caso por causa do js poria ser subistituida pela tag p -->
+                    <!-- essa parte do menu você terá que ver como é a estrutura do menu na framework que você escolher -->
+                    <a>Home</a>
+                </div>
+                <div id="bruxos" onclick="bruxos()" class="button">
+                    <a>Bruxos</a>
+                </div>
+                <div id="produtos" onclick="produtos()" class="button">
+                    <a>Produtos</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="col" style="padding-left: 0 !important">
+        <div>
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand mb-0 h1"></span>
+                <div id="login">
+                    Usuário
+                </div>
+                <i class="fas fa-user fa-2x "></i>
+            </nav>
+        </div>
+        <div>
+            <iframe id="frame" src="home.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js " integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js " integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js " integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn " crossorigin="anonymous "></script>
+</body>
+
+</html>;
